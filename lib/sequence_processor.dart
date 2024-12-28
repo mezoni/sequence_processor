@@ -67,6 +67,33 @@ current: $data''');
     }
   }
 
+  bool hasSequence(List<E> sequence) {
+    if (sequence.isEmpty) {
+      throw ArgumentError('Must not be empty', 'sequence');
+    }
+
+    final ch = sequence[0];
+    var node = _root[ch];
+    if (node == null) {
+      return false;
+    }
+
+    var children = node.children;
+    for (var i = 1; i < sequence.length; i++) {
+      final element = sequence[i];
+      final next = children[element];
+      if (next == null) {
+        break;
+      }
+
+      node = next;
+      children = next.children;
+    }
+
+    node = node!;
+    return node.isTerminal;
+  }
+
   List<SequenceElement<E, T>> process(List<E> data) {
     final result = <SequenceElement<E, T>>[];
     for (var i = 0; i < data.length; i++) {

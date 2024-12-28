@@ -1,5 +1,5 @@
 name: sequence_processor
-version: 0.1.0
+version: 0.1.1
 description: Processing data to find sequences in the data.
 homepage: https://github.com/mezoni/sequence_processor
 environment:
