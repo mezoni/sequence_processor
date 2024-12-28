@@ -90,5 +90,35 @@ void _test() {
       ];
       expect('$r2', '$r3', reason: 'Data: $r1');
     }
+    {
+      const r1 = [1, 2, 3];
+      final r2 = processor.hasSequence(r1);
+      expect(r2, true, reason: 'hasSequence(): $r1');
+    }
+    {
+      const r1 = [4, 5, 6];
+      final r2 = processor.hasSequence(r1);
+      expect(r2, true, reason: 'hasSequence(): $r1');
+    }
+    {
+      const r1 = [7];
+      final r2 = processor.hasSequence(r1);
+      expect(r2, true, reason: 'hasSequence(): $r1');
+    }
+    {
+      const r1 = [1];
+      final r2 = processor.hasSequence(r1);
+      expect(r2, false, reason: 'hasSequence(): $r1');
+    }
+    {
+      const r1 = [1, 2];
+      final r2 = processor.hasSequence(r1);
+      expect(r2, false, reason: 'hasSequence(): $r1');
+    }
+    {
+      const r1 = [8];
+      final r2 = processor.hasSequence(r1);
+      expect(r2, false, reason: 'hasSequence(): $r1');
+    }
   });
 }
